@@ -4,7 +4,7 @@ ContractGuard AI - 개선 제안 Agent
 """
 from typing import Any, Dict
 import json
-from langchain.schema import HumanMessage
+from langchain_core.messages import HumanMessage
 
 from .base_agent import BaseAgent
 from prompts.templates import PromptTemplates

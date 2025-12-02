@@ -2,6 +2,30 @@
 ContractGuard AI - 메인 애플리케이션
 AI 기반 계약서 리스크 분석 어시스턴트
 """
+# 필수 패키지 자동 설치
+import subprocess
+import sys
+
+def install_package(package):
+    """패키지가 없으면 자동 설치"""
+    try:
+        __import__(package.split('[')[0])
+    except ImportError:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# 필수 패키지 확인 및 설치
+try:
+    import PyPDF2
+except ImportError:
+    install_package("PyPDF2")
+    import PyPDF2
+
+try:
+    import docx
+except ImportError:
+    install_package("python-docx")
+    import docx
+
 import streamlit as st
 from typing import Dict, Any
 import json

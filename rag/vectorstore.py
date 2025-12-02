@@ -6,7 +6,7 @@ import os
 from typing import List, Optional
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.text_splitters import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 
 from config.settings import azure_config, app_config

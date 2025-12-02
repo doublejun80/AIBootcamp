@@ -4,8 +4,24 @@ PDF, DOCX, TXT 파일에서 텍스트 추출
 """
 import io
 from typing import Optional
-from PyPDF2 import PdfReader
-from docx import Document
+
+try:
+    from PyPDF2 import PdfReader
+except ImportError as e:
+    raise ImportError(
+        "PyPDF2가 설치되지 않았습니다. 다음 명령어로 설치하세요:\n"
+        "pip install PyPDF2\n"
+        f"원본 오류: {e}"
+    )
+
+try:
+    from docx import Document
+except ImportError as e:
+    raise ImportError(
+        "python-docx가 설치되지 않았습니다. 다음 명령어로 설치하세요:\n"
+        "pip install python-docx\n"
+        f"원본 오류: {e}"
+    )
 
 
 class DocumentLoader:

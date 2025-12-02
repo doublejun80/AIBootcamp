@@ -2,9 +2,14 @@
 ContractGuard AI - LangGraph 워크플로우
 Multi-Agent 협업 오케스트레이션
 """
+import sys
+import os
 from typing import TypedDict, Annotated, Sequence, Dict, Any
 from langgraph.graph import StateGraph, END
 from langgraph.checkpoint.memory import MemorySaver
+
+# 프로젝트 루트를 Python 경로에 추가
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from agents.contract_analyzer import ContractAnalyzerAgent
 from agents.risk_evaluator import RiskEvaluatorAgent
@@ -33,12 +38,12 @@ class ContractAnalysisWorkflow:
         self.risk_evaluator = RiskEvaluatorAgent()
         self.clause_comparator = ClauseComparatorAgent()
         self.improvement_advisor = ImprovementAdvisorAgent()
-        
+
+        # 메모리 (멀티턴 대화용) - 그래프 생성 전에 초기화
+        self.memory = MemorySaver()
+
         # 그래프 생성
         self.graph = self._build_graph()
-        
-        # 메모리 (멀티턴 대화용)
-        self.memory = MemorySaver()
     
     def _build_graph(self) -> StateGraph:
         """워크플로우 그래프 구성"""

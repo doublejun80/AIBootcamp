@@ -3,7 +3,7 @@ ContractGuard AI - 조항 비교 Agent
 표준계약서와 비교 분석
 """
 from typing import Any, Dict
-from langchain.schema import HumanMessage
+from langchain_core.messages import HumanMessage
 
 from .base_agent import BaseAgent
 from prompts.templates import PromptTemplates

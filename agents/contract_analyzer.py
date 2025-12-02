@@ -3,7 +3,7 @@ ContractGuard AI - 계약 분석 Agent
 계약서 유형 파악 및 핵심 조항 추출
 """
 from typing import Any, Dict
-from langchain.schema import HumanMessage
+from langchain_core.messages import HumanMessage
 
 from .base_agent import BaseAgent
 from prompts.templates import PromptTemplates
